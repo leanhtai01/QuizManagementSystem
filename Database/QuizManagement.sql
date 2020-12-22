@@ -5,14 +5,14 @@
  Source Server Type    : SQL Server
  Source Server Version : 15004073
  Source Host           : localhost:1433
- Source Catalog        : QuizManagementDB
+ Source Catalog        : QuizManagement
  Source Schema         : dbo
 
  Target Server Type    : SQL Server
  Target Server Version : 15004073
  File Encoding         : 65001
 
- Date: 22/12/2020 20:34:49
+ Date: 22/12/2020 21:04:30
 */
 
 
@@ -24,7 +24,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[An
 GO
 
 CREATE TABLE [dbo].[Answer] (
-  [answerID] int  IDENTITY NOT NULL,
+  [answerID] int  IDENTITY(1,1) NOT NULL,
   [description] nvarchar(1000) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
   [questionID] int  NULL,
   [isCorrect] bit  NULL
@@ -117,7 +117,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Cl
 GO
 
 CREATE TABLE [dbo].[Class] (
-  [classID] int  IDENTITY NOT NULL,
+  [classID] int  IDENTITY(1,1) NOT NULL,
   [schoolLevelID] int  NULL,
   [name] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
 )
@@ -160,7 +160,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Ex
 GO
 
 CREATE TABLE [dbo].[Exam] (
-  [examID] int  IDENTITY NOT NULL,
+  [examID] int  IDENTITY(1,1) NOT NULL,
   [description] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
   [type] bit  NULL,
   [createBy] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
@@ -250,7 +250,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Pr
 GO
 
 CREATE TABLE [dbo].[PracticeAnswer] (
-  [practiceAnswerID] int  IDENTITY NOT NULL,
+  [practiceAnswerID] int  IDENTITY(1,1) NOT NULL,
   [description] nvarchar(1000) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
   [practiceQuestionID] int  NULL,
   [isCorrect] bit  NULL
@@ -285,7 +285,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Pr
 GO
 
 CREATE TABLE [dbo].[PracticeQuestion] (
-  [practiceQuestionID] int  IDENTITY NOT NULL,
+  [practiceQuestionID] int  IDENTITY(1,1) NOT NULL,
   [description] nvarchar(1000) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
   [questionLevelID] int  NULL,
   [subjectID] int  NULL,
@@ -350,7 +350,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Qu
 GO
 
 CREATE TABLE [dbo].[Question] (
-  [questionID] int  IDENTITY NOT NULL,
+  [questionID] int  IDENTITY(1,1) NOT NULL,
   [description] nvarchar(1000) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
   [questionLevelID] int  NULL,
   [subjectID] int  NULL,
@@ -388,7 +388,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Qu
 GO
 
 CREATE TABLE [dbo].[QuestionLevel] (
-  [questionLevelID] int  IDENTITY NOT NULL,
+  [questionLevelID] int  IDENTITY(1,1) NOT NULL,
   [description] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
 )
 GO
@@ -448,7 +448,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Qu
 GO
 
 CREATE TABLE [dbo].[Quiz] (
-  [quizID] int  IDENTITY NOT NULL,
+  [quizID] int  IDENTITY(1,1) NOT NULL,
   [length] int  NULL,
   [type] bit  NULL,
   [createBy] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
@@ -583,7 +583,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Sc
 GO
 
 CREATE TABLE [dbo].[SchoolLevel] (
-  [schoolLevelID] int  IDENTITY NOT NULL,
+  [schoolLevelID] int  IDENTITY(1,1) NOT NULL,
   [description] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
 )
 GO
@@ -684,7 +684,7 @@ IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[Su
 GO
 
 CREATE TABLE [dbo].[Subject] (
-  [subjectID] int  IDENTITY NOT NULL,
+  [subjectID] int  IDENTITY(1,1) NOT NULL,
   [name] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
 )
 GO
@@ -859,6 +859,9 @@ GO
 -- ----------------------------
 -- Auto increment value for Answer
 -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[Answer]', RESEED, 1)
+GO
+
 
 -- ----------------------------
 -- Primary Key structure for table Answer
@@ -906,6 +909,9 @@ GO
 -- ----------------------------
 -- Auto increment value for Exam
 -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[Exam]', RESEED, 1)
+GO
+
 
 -- ----------------------------
 -- Primary Key structure for table Exam
@@ -937,6 +943,9 @@ GO
 -- ----------------------------
 -- Auto increment value for PracticeAnswer
 -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[PracticeAnswer]', RESEED, 1)
+GO
+
 
 -- ----------------------------
 -- Primary Key structure for table PracticeAnswer
@@ -950,6 +959,9 @@ GO
 -- ----------------------------
 -- Auto increment value for PracticeQuestion
 -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[PracticeQuestion]', RESEED, 1)
+GO
+
 
 -- ----------------------------
 -- Primary Key structure for table PracticeQuestion
@@ -972,6 +984,9 @@ GO
 -- ----------------------------
 -- Auto increment value for Question
 -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[Question]', RESEED, 1)
+GO
+
 
 -- ----------------------------
 -- Primary Key structure for table Question
@@ -985,6 +1000,9 @@ GO
 -- ----------------------------
 -- Auto increment value for QuestionLevel
 -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[QuestionLevel]', RESEED, 1)
+GO
+
 
 -- ----------------------------
 -- Primary Key structure for table QuestionLevel
@@ -1007,6 +1025,9 @@ GO
 -- ----------------------------
 -- Auto increment value for Quiz
 -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[Quiz]', RESEED, 1)
+GO
+
 
 -- ----------------------------
 -- Primary Key structure for table Quiz
@@ -1081,6 +1102,9 @@ GO
 -- ----------------------------
 -- Auto increment value for Subject
 -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[Subject]', RESEED, 1)
+GO
+
 
 -- ----------------------------
 -- Primary Key structure for table Subject
