@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuizManagement" Class="QuizManagementDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=QuizManagement;Persist Security Info=True;User ID=sa" SettingsObjectName="QuizManagementSystem.Properties.Settings" SettingsPropertyName="QuizManagementConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Answer" Member="Answers">
+    <Type Name="Answer">
+      <Column Name="answerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="questionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isCorrect" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Question_Answer" Member="Question" ThisKey="questionID" OtherKey="questionID" Type="Question" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="username" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="roleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_StudentUser" Member="StudentUser" ThisKey="username" OtherKey="username" Type="StudentUser" Cardinality="One" />
+      <Association Name="User_TeacherUser" Member="TeacherUser" ThisKey="username" OtherKey="username" Type="TeacherUser" Cardinality="One" />
+      <Association Name="Role_User" Member="Role" ThisKey="roleID" OtherKey="roleID" Type="Role" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AnswerPracticeQuestion" Member="AnswerPracticeQuestions">
+    <Type Name="AnswerPracticeQuestion">
+      <Column Name="username" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="practiceQuestionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dateAttempt" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="isCorrect" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="PracticeQuestion_AnswerPracticeQuestion" Member="PracticeQuestion" ThisKey="practiceQuestionID" OtherKey="practiceQuestionID" Type="PracticeQuestion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AnswerQuestion" Member="AnswerQuestions">
+    <Type Name="AnswerQuestion">
+      <Column Name="username" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="questionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dateAttempt" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="isCorrect" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Question_AnswerQuestion" Member="Question" ThisKey="questionID" OtherKey="questionID" Type="Question" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Class" Member="Classes">
+    <Type Name="Class">
+      <Column Name="classID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="schoolLevelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Class_Student" Member="Students" ThisKey="classID" OtherKey="classID" Type="Student" />
+      <Association Name="SchoolLevel_Class" Member="SchoolLevel" ThisKey="schoolLevelID" OtherKey="schoolLevelID" Type="SchoolLevel" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Exam" Member="Exams">
+    <Type Name="Exam">
+      <Column Name="examID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="type" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="createBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="lastModifiedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Exam_ExamQuiz" Member="ExamQuizs" ThisKey="examID" OtherKey="examID" Type="ExamQuiz" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExamQuiz" Member="ExamQuizs">
+    <Type Name="ExamQuiz">
+      <Column Name="quizID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="examID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="ExamQuiz_TakeQuizInExam" Member="TakeQuizInExams" ThisKey="quizID,examID" OtherKey="quizID,examID" Type="TakeQuizInExam" />
+      <Association Name="Exam_ExamQuiz" Member="Exam" ThisKey="examID" OtherKey="examID" Type="Exam" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Quiz_ExamQuiz" Member="Quiz" ThisKey="quizID" OtherKey="quizID" Type="Quiz" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FormControl" Member="FormControls">
+    <Type Name="FormControl">
+      <Column Name="form" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="control" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="FormControl_RoleFormControl" Member="RoleFormControls" ThisKey="form,control" OtherKey="form,control" Type="RoleFormControl" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PracticeAnswer" Member="PracticeAnswers">
+    <Type Name="PracticeAnswer">
+      <Column Name="practiceAnswerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="practiceQuestionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isCorrect" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="PracticeQuestion_PracticeAnswer" Member="PracticeQuestion" ThisKey="practiceQuestionID" OtherKey="practiceQuestionID" Type="PracticeQuestion" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PracticeQuestion" Member="PracticeQuestions">
+    <Type Name="PracticeQuestion">
+      <Column Name="practiceQuestionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="questionLevelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="schoolLevelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="contribBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="verifyBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="PracticeQuestion_AnswerPracticeQuestion" Member="AnswerPracticeQuestions" ThisKey="practiceQuestionID" OtherKey="practiceQuestionID" Type="AnswerPracticeQuestion" />
+      <Association Name="PracticeQuestion_PracticeAnswer" Member="PracticeAnswers" ThisKey="practiceQuestionID" OtherKey="practiceQuestionID" Type="PracticeAnswer" />
+      <Association Name="PracticeQuestion_PracticeQuestionQuiz" Member="PracticeQuestionQuizs" ThisKey="practiceQuestionID" OtherKey="practiceQuestionID" Type="PracticeQuestionQuiz" />
+      <Association Name="QuestionLevel_PracticeQuestion" Member="QuestionLevel" ThisKey="questionLevelID" OtherKey="questionLevelID" Type="QuestionLevel" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="SchoolLevel_PracticeQuestion" Member="SchoolLevel" ThisKey="schoolLevelID" OtherKey="schoolLevelID" Type="SchoolLevel" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="Subject_PracticeQuestion" Member="Subject" ThisKey="subjectID" OtherKey="subjectID" Type="Subject" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PracticeQuestionQuiz" Member="PracticeQuestionQuizs">
+    <Type Name="PracticeQuestionQuiz">
+      <Column Name="practiceQuestionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quizID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="PracticeQuestion_PracticeQuestionQuiz" Member="PracticeQuestion" ThisKey="practiceQuestionID" OtherKey="practiceQuestionID" Type="PracticeQuestion" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Quiz_PracticeQuestionQuiz" Member="Quiz" ThisKey="quizID" OtherKey="quizID" Type="Quiz" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Question" Member="Questions">
+    <Type Name="Question">
+      <Column Name="questionID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="questionLevelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subjectID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="schoolLevelID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="createBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="lastModifiedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Question_Answer" Member="Answers" ThisKey="questionID" OtherKey="questionID" Type="Answer" />
+      <Association Name="Question_AnswerQuestion" Member="AnswerQuestions" ThisKey="questionID" OtherKey="questionID" Type="AnswerQuestion" />
+      <Association Name="Question_QuestionQuiz" Member="QuestionQuizs" ThisKey="questionID" OtherKey="questionID" Type="QuestionQuiz" />
+      <Association Name="QuestionLevel_Question" Member="QuestionLevel" ThisKey="questionLevelID" OtherKey="questionLevelID" Type="QuestionLevel" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="SchoolLevel_Question" Member="SchoolLevel" ThisKey="schoolLevelID" OtherKey="schoolLevelID" Type="SchoolLevel" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="Subject_Question" Member="Subject" ThisKey="subjectID" OtherKey="subjectID" Type="Subject" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuestionLevel" Member="QuestionLevels">
+    <Type Name="QuestionLevel">
+      <Column Name="questionLevelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="QuestionLevel_PracticeQuestion" Member="PracticeQuestions" ThisKey="questionLevelID" OtherKey="questionLevelID" Type="PracticeQuestion" />
+      <Association Name="QuestionLevel_Question" Member="Questions" ThisKey="questionLevelID" OtherKey="questionLevelID" Type="Question" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QuestionQuiz" Member="QuestionQuizs">
+    <Type Name="QuestionQuiz">
+      <Column Name="questionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quizID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Question_QuestionQuiz" Member="Question" ThisKey="questionID" OtherKey="questionID" Type="Question" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Quiz_QuestionQuiz" Member="Quiz" ThisKey="quizID" OtherKey="quizID" Type="Quiz" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Quiz" Member="Quizs">
+    <Type Name="Quiz">
+      <Column Name="quizID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="length" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="createBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="lastModifiedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Quiz_ExamQuiz" Member="ExamQuizs" ThisKey="quizID" OtherKey="quizID" Type="ExamQuiz" />
+      <Association Name="Quiz_PracticeQuestionQuiz" Member="PracticeQuestionQuizs" ThisKey="quizID" OtherKey="quizID" Type="PracticeQuestionQuiz" />
+      <Association Name="Quiz_QuestionQuiz" Member="QuestionQuizs" ThisKey="quizID" OtherKey="quizID" Type="QuestionQuiz" />
+      <Association Name="Quiz_TakeQuiz" Member="TakeQuizs" ThisKey="quizID" OtherKey="quizID" Type="TakeQuiz" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Roles">
+    <Type Name="Role">
+      <Column Name="roleID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Role_User" Member="Users" ThisKey="roleID" OtherKey="roleID" Type="User" />
+      <Association Name="Role_RoleFormControl" Member="RoleFormControls" ThisKey="roleID" OtherKey="roleID" Type="RoleFormControl" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RoleFormControl" Member="RoleFormControls">
+    <Type Name="RoleFormControl">
+      <Column Name="roleID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="form" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="control" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="invisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="disable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="FormControl_RoleFormControl" Member="FormControl" ThisKey="form,control" OtherKey="form,control" Type="FormControl" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Role_RoleFormControl" Member="Role" ThisKey="roleID" OtherKey="roleID" Type="Role" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RoleForSignup" Member="RoleForSignups">
+    <Type Name="RoleForSignup">
+      <Column Name="roleID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SchoolLevel" Member="SchoolLevels">
+    <Type Name="SchoolLevel">
+      <Column Name="schoolLevelID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="SchoolLevel_Class" Member="Classes" ThisKey="schoolLevelID" OtherKey="schoolLevelID" Type="Class" />
+      <Association Name="SchoolLevel_PracticeQuestion" Member="PracticeQuestions" ThisKey="schoolLevelID" OtherKey="schoolLevelID" Type="PracticeQuestion" />
+      <Association Name="SchoolLevel_Question" Member="Questions" ThisKey="schoolLevelID" OtherKey="schoolLevelID" Type="Question" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Students">
+    <Type Name="Student">
+      <Column Name="studentID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="dateOfBirth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="classID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Student_StudentUser" Member="StudentUsers" ThisKey="studentID" OtherKey="studentID" Type="StudentUser" />
+      <Association Name="Class_Student" Member="Class" ThisKey="classID" OtherKey="classID" Type="Class" IsForeignKey="true" DeleteRule="SET NULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StudentUser" Member="StudentUsers">
+    <Type Name="StudentUser">
+      <Column Name="username" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="studentID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="User_StudentUser" Member="User" ThisKey="username" OtherKey="username" Type="User" IsForeignKey="true" />
+      <Association Name="Student_StudentUser" Member="Student" ThisKey="studentID" OtherKey="studentID" Type="Student" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Subject" Member="Subjects">
+    <Type Name="Subject">
+      <Column Name="subjectID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Subject_PracticeQuestion" Member="PracticeQuestions" ThisKey="subjectID" OtherKey="subjectID" Type="PracticeQuestion" />
+      <Association Name="Subject_Question" Member="Questions" ThisKey="subjectID" OtherKey="subjectID" Type="Question" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TakeQuiz" Member="TakeQuizs">
+    <Type Name="TakeQuiz">
+      <Column Name="username" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quizID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="dateAttempt" Type="System.DateTime" DbType="Date NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="grade" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Quiz_TakeQuiz" Member="Quiz" ThisKey="quizID" OtherKey="quizID" Type="Quiz" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TakeQuizInExam" Member="TakeQuizInExams">
+    <Type Name="TakeQuizInExam">
+      <Column Name="username" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="examID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quizID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="schedule" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="ExamQuiz_TakeQuizInExam" Member="ExamQuiz" ThisKey="quizID,examID" OtherKey="quizID,examID" Type="ExamQuiz" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Teacher" Member="Teachers">
+    <Type Name="Teacher">
+      <Column Name="teacherID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="dateOfBirth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Teacher_TeacherUser" Member="TeacherUsers" ThisKey="teacherID" OtherKey="teacherID" Type="TeacherUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TeacherUser" Member="TeacherUsers">
+    <Type Name="TeacherUser">
+      <Column Name="username" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="teacherID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="User_TeacherUser" Member="User" ThisKey="username" OtherKey="username" Type="User" IsForeignKey="true" />
+      <Association Name="Teacher_TeacherUser" Member="Teacher" ThisKey="teacherID" OtherKey="teacherID" Type="Teacher" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+</Database>
