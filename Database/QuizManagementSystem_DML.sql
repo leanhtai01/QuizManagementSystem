@@ -1,2 +1,0 @@
--- File: QuizManagementSystem_DML.sql
--- Add data to database

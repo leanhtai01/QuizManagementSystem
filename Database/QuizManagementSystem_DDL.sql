@@ -1,2 +1,0 @@
--- File: QuizManagementSystem_DDL.sql
--- Defining database structure
