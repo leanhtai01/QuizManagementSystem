@@ -108,7 +108,7 @@ namespace QuizManagementSystem.Views
             this.textBoxUsername.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxUsername.Location = new System.Drawing.Point(111, 16);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(178, 20);
+            this.textBoxUsername.Size = new System.Drawing.Size(197, 20);
             this.textBoxUsername.TabIndex = 2;
             // 
             // textBoxPassword
@@ -117,7 +117,7 @@ namespace QuizManagementSystem.Views
             this.textBoxPassword.Location = new System.Drawing.Point(111, 69);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(178, 20);
+            this.textBoxPassword.Size = new System.Drawing.Size(197, 20);
             this.textBoxPassword.TabIndex = 3;
             // 
             // tableLayoutPanel2

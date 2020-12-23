@@ -83,6 +83,9 @@
     <EmbeddedResource Include="Views\LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\SignupView.resx">
+      <DependentUpon>SignupView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Models\QuizManagement.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>QuizManagement.designer.cs</LastGenOutput>
