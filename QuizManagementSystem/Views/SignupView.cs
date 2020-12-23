@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuizManagementSystem
+namespace QuizManagementSystem.Views
 {
-    public partial class Form1 : Form
+    public partial class SignupView : Form
     {
-        public Form1()
+        public SignupView()
         {
             InitializeComponent();
         }
