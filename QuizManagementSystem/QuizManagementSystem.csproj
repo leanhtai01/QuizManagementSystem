@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelperClasses\Password.cs" />
+    <Compile Include="HelperClasses\EncryptPassword.cs" />
     <Compile Include="Models\QuizManagement.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

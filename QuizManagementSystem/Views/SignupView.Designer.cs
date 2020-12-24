@@ -31,19 +31,19 @@ namespace QuizManagementSystem.Views
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxReEnterPassword = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonCreate = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.textBoxReEnterPassword = new System.Windows.Forms.TextBox();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.comboBoxRole = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonCreate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -97,11 +97,29 @@ namespace QuizManagementSystem.Views
             this.tableLayoutPanel1.Size = new System.Drawing.Size(341, 230);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // textBoxReEnterPassword
+            // 
+            this.textBoxReEnterPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxReEnterPassword.Location = new System.Drawing.Point(108, 105);
+            this.textBoxReEnterPassword.Name = "textBoxReEnterPassword";
+            this.textBoxReEnterPassword.PasswordChar = '*';
+            this.textBoxReEnterPassword.Size = new System.Drawing.Size(199, 20);
+            this.textBoxReEnterPassword.TabIndex = 7;
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxPassword.Location = new System.Drawing.Point(108, 59);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(199, 20);
+            this.textBoxPassword.TabIndex = 6;
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 16);
+            this.label1.Location = new System.Drawing.Point(44, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
@@ -111,7 +129,7 @@ namespace QuizManagementSystem.Views
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 62);
+            this.label2.Location = new System.Drawing.Point(46, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 1;
@@ -121,7 +139,7 @@ namespace QuizManagementSystem.Views
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 108);
+            this.label3.Location = new System.Drawing.Point(3, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 13);
             this.label3.TabIndex = 2;
@@ -131,7 +149,7 @@ namespace QuizManagementSystem.Views
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(71, 154);
+            this.label4.Location = new System.Drawing.Point(70, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 3;
@@ -141,11 +159,37 @@ namespace QuizManagementSystem.Views
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(82, 200);
+            this.label5.Location = new System.Drawing.Point(81, 200);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(21, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "ID:";
+            // 
+            // textBoxUsername
+            // 
+            this.textBoxUsername.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxUsername.Location = new System.Drawing.Point(108, 13);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(199, 20);
+            this.textBoxUsername.TabIndex = 5;
+            // 
+            // textBoxID
+            // 
+            this.textBoxID.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxID.Location = new System.Drawing.Point(108, 197);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(199, 20);
+            this.textBoxID.TabIndex = 8;
+            // 
+            // comboBoxRole
+            // 
+            this.comboBoxRole.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.comboBoxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.Location = new System.Drawing.Point(108, 150);
+            this.comboBoxRole.Name = "comboBoxRole";
+            this.comboBoxRole.Size = new System.Drawing.Size(199, 21);
+            this.comboBoxRole.TabIndex = 9;
             // 
             // tableLayoutPanel2
             // 
@@ -162,16 +206,6 @@ namespace QuizManagementSystem.Views
             this.tableLayoutPanel2.Size = new System.Drawing.Size(341, 50);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // buttonCreate
-            // 
-            this.buttonCreate.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonCreate.Location = new System.Drawing.Point(32, 3);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(105, 36);
-            this.buttonCreate.TabIndex = 0;
-            this.buttonCreate.Text = "Create";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            // 
             // buttonCancel
             // 
             this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -182,46 +216,15 @@ namespace QuizManagementSystem.Views
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // textBoxUsername
+            // buttonCreate
             // 
-            this.textBoxUsername.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxUsername.Location = new System.Drawing.Point(109, 13);
-            this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(199, 20);
-            this.textBoxUsername.TabIndex = 5;
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxPassword.Location = new System.Drawing.Point(109, 59);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(199, 20);
-            this.textBoxPassword.TabIndex = 6;
-            // 
-            // textBoxReEnterPassword
-            // 
-            this.textBoxReEnterPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxReEnterPassword.Location = new System.Drawing.Point(109, 105);
-            this.textBoxReEnterPassword.Name = "textBoxReEnterPassword";
-            this.textBoxReEnterPassword.Size = new System.Drawing.Size(199, 20);
-            this.textBoxReEnterPassword.TabIndex = 7;
-            // 
-            // textBoxID
-            // 
-            this.textBoxID.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxID.Location = new System.Drawing.Point(109, 197);
-            this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(199, 20);
-            this.textBoxID.TabIndex = 8;
-            // 
-            // comboBoxRole
-            // 
-            this.comboBoxRole.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.comboBoxRole.FormattingEnabled = true;
-            this.comboBoxRole.Location = new System.Drawing.Point(109, 150);
-            this.comboBoxRole.Name = "comboBoxRole";
-            this.comboBoxRole.Size = new System.Drawing.Size(199, 21);
-            this.comboBoxRole.TabIndex = 9;
+            this.buttonCreate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonCreate.Location = new System.Drawing.Point(32, 3);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(105, 36);
+            this.buttonCreate.TabIndex = 0;
+            this.buttonCreate.Text = "Create";
+            this.buttonCreate.UseVisualStyleBackColor = true;
             // 
             // SignupView
             // 

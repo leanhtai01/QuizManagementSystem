@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuizManagementSystem.HelperClasses
 {
-    public class Password
+    public class EncryptPassword
     {
         private readonly int SALT_SIZE = 10;
 

@@ -15,6 +15,20 @@ namespace QuizManagementSystem.Views
         public LoginView()
         {
             InitializeComponent();
+            InitializeButtonSignup();
+        }
+
+        /// <summary>
+        /// Initialize buttonSignup
+        /// </summary>
+        private void InitializeButtonSignup()
+        {
+            buttonSignup.Click += (_, e) =>
+            {
+                SignupView signupView = new SignupView();
+
+                signupView.ShowDialog();
+            };
         }
     }
 }
