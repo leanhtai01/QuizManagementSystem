@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace QuizManagementSystem.Views
 {
     public interface ILoginView
-    {
-        User Login { get; set; }
+    {    
         string Username { get; set; }
         string Password { get; set; }
         string ResponseMessage { get; set; }

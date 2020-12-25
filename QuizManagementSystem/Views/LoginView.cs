@@ -40,8 +40,8 @@ namespace QuizManagementSystem.Views
             buttonLogin.Click += (_, e) =>
             {
                 // pass data to presenter
-                Password = textBoxPassword.Text;                               
-                Login = GetUserFromUI();
+                Password = textBoxPassword.Text;
+                Username = textBoxUsername.Text;
 
                 LoginUser?.Invoke(this, e);
 
@@ -52,14 +52,7 @@ namespace QuizManagementSystem.Views
         private void InitTextBoxPassword()
         {
             textBoxPassword.TextChanged += TextBox_TextChanged;
-        }
-        private User GetUserFromUI()
-        {
-            return new User
-            {
-                username = textBoxUsername.Text,            
-            };
-        }
+        }     
         private void InitTextBoxUsername()
         {
             textBoxUsername.TextChanged += TextBox_TextChanged;

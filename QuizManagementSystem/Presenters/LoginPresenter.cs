@@ -40,12 +40,12 @@ namespace QuizManagementSystem.Presenters
             using (QuizManagementDataContext dataContext = new QuizManagementDataContext())
             {
                 // check whether Username already exist
-                if (dataContext.Users.SingleOrDefault(user => user.username.Equals(view.Login.username)) != null)
+                if (dataContext.Users.SingleOrDefault(user => user.username.Equals(view.Username)) != null)
                 {
                     // select password from user              
                     var passwordQuery =
                         (from user in dataContext.Users
-                         where user.username == view.Login.username
+                         where user.username == view.Username
                          select user.password).Single();
 
 
