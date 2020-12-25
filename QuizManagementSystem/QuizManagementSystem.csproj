@@ -86,6 +86,9 @@
     <EmbeddedResource Include="Views\SignupView.resx">
       <DependentUpon>SignupView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="Models\QuizManagement.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>QuizManagement.designer.cs</LastGenOutput>

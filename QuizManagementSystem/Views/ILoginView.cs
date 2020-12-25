@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizManagementSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace QuizManagementSystem.Views
 {
-    interface ILoginView
+    public interface ILoginView
     {
+        User Login { get; set; }
+        string Username { get; set; }
+        string Password { get; set; }
+        string ResponseMessage { get; set; }
+
+        event EventHandler LoginUser;
     }
 }
