@@ -28,14 +28,12 @@ namespace QuizManagementSystem.Views
 
         private void InitControls()
         {
-            InitTextBoxUsername();
-            InitTextBoxPassword();
             InitButtonLogin();
         }
 
         private void InitButtonLogin()
         {
-            buttonLogin.Enabled = false;
+            buttonLogin.Enabled = true;
 
             buttonLogin.Click += (_, e) =>
             {
@@ -47,34 +45,7 @@ namespace QuizManagementSystem.Views
 
                 MessageBox.Show(ResponseMessage);
             };
-        }
-
-        private void InitTextBoxPassword()
-        {
-            textBoxPassword.TextChanged += TextBox_TextChanged;
         }     
-        private void InitTextBoxUsername()
-        {
-            textBoxUsername.TextChanged += TextBox_TextChanged;
-        }
-        /// <summary>
-        /// Disable Button Login if any TextBox is empty
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-           buttonLogin.Enabled = true;
-
-            foreach (TextBox textBox in tableLayoutPanel1.Controls.OfType<TextBox>())
-            {
-                if (string.IsNullOrEmpty(textBox.Text.Trim()))
-                {
-                    buttonLogin.Enabled = false;
-                    break;
-                }
-            }
-        }
 
         public User Login { get; set ; }
         public string Username { get; set ; }
@@ -82,8 +53,6 @@ namespace QuizManagementSystem.Views
         public string ResponseMessage { get ; set; }
 
         public event EventHandler LoginUser;
-
-
 
         /// <summary>
         /// Initialize buttonSignup
