@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace QuizManagementSystem.Views
 {
-    interface ILoginView
+    public interface ILoginView
     {
         User LoginUser { get; set; }
-        string ResponseMessage { get; set; }
+        int RoleID { get; set; }
+        event EventHandler Authenticate;
     }
 }

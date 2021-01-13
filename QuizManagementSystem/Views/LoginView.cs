@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuizManagementSystem.Models;
+using QuizManagementSystem.Presenters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +12,21 @@ using System.Windows.Forms;
 
 namespace QuizManagementSystem.Views
 {
-    public partial class LoginView : Form
+    public partial class LoginView : Form, ILoginView
     {
+        public User LoginUser { get; set; }
+        public int RoleID { get; set; }
+
+        public event EventHandler Authenticate;
+
         public LoginView()
         {
             InitializeComponent();
+
+            LoginPresenter presenter = new LoginPresenter(this);
+
+            AcceptButton = buttonLogin;
+
             InitControls();
         }
 
@@ -48,6 +60,22 @@ namespace QuizManagementSystem.Views
         private void InitButtonLogin()
         {
             buttonLogin.Enabled = false;
+
+            buttonLogin.Click += (_, e) =>
+            {
+                LoginUser = GetUserFromUI();
+
+                Authenticate?.Invoke(this, e);
+
+                if (RoleID != -1)
+                {
+                    MessageBox.Show("Login success!");
+                }
+                else
+                {
+                    MessageBox.Show("Login failed!");
+                }
+            };
         }
 
         /// <summary>
@@ -60,6 +88,15 @@ namespace QuizManagementSystem.Views
                 SignupView signupView = new SignupView();
 
                 signupView.ShowDialog();
+            };
+        }
+
+        private User GetUserFromUI()
+        {
+            return new User
+            {
+                username = textBoxUsername.Text,
+                password = textBoxPassword.Text
             };
         }
     }
