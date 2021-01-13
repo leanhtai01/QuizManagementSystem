@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizManagementSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace QuizManagementSystem.Views
 {
     interface ILoginView
     {
+        User LoginUser { get; set; }
+        string ResponseMessage { get; set; }
     }
 }
