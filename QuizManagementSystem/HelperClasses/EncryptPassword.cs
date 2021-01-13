@@ -110,12 +110,26 @@ namespace QuizManagementSystem.HelperClasses
         /// <returns></returns>
         public bool IsPasswordValid(string password, string saltedPassword)
         {
-            byte[] validPasswordBytes = Convert.FromBase64String(saltedPassword);
-            byte[] salt = new byte[SALT_SIZE];
+            bool isValid = true;
 
-            Buffer.BlockCopy(validPasswordBytes, 0, salt, 0, SALT_SIZE);
+            if (saltedPassword == "")
+            {
+                if (password != "")
+                {
+                    isValid = false;
+                }
+            }
+            else
+            {
+                byte[] validPasswordBytes = Convert.FromBase64String(saltedPassword);
+                byte[] salt = new byte[SALT_SIZE];
 
-            return GetSaltedPassword(password, salt) == saltedPassword;
+                Buffer.BlockCopy(validPasswordBytes, 0, salt, 0, SALT_SIZE);
+                isValid = GetSaltedPassword(password, salt) == saltedPassword;
+            }
+            
+
+            return isValid;
         }
     }
 }
