@@ -69,6 +69,12 @@ namespace QuizManagementSystem.Views
 
                 if (RoleID != -1)
                 {
+                    if (LoginUser.password == "")
+                    {
+                        ChangePasswordView changePasswordView = new ChangePasswordView(LoginUser.username);
+
+                        changePasswordView.ShowDialog();
+                    }
                     MessageBox.Show("Login success!");
                 }
                 else
