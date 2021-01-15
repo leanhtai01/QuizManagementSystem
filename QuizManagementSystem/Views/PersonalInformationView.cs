@@ -34,6 +34,95 @@ namespace QuizManagementSystem.Views
             PersonalInformationPresenter presenter = new PersonalInformationPresenter(this);
 
             Load += PersonalInformationView_Load;
+
+            InitControls();
+        }
+
+        private void InitControls()
+        {
+            InitTextBoxUsername();
+            InitTextBoxRole();
+            InitTextBoxID();
+            InitTextBoxClass();
+            InitTextBoxName();
+            InitDateTimePickerDateOfBirth();
+            InitButtonCancel();
+            InitButtonChangePassword();
+            InitButtonEditName();
+            InitButtonEditDateOfBirth();
+        }
+
+        private void InitButtonEditDateOfBirth()
+        {
+            buttonEditDateOfBirth.Click += (_, e) =>
+            {
+                // toggle dateTimePickerDateOfBirth enable/disable
+                if (dateTimePickerDateOfBirth.Enabled == false)
+                {
+                    dateTimePickerDateOfBirth.Enabled = true;
+                }
+                else
+                {
+                    dateTimePickerDateOfBirth.Enabled = false;
+                }
+            };
+        }
+
+        private void InitButtonEditName()
+        {
+            buttonEditName.Click += (_, e) =>
+            {
+                // toggle textBoxName enable/disable
+                textBoxName.Enabled = textBoxName.Enabled ? false : true;
+            };
+        }
+
+        private void InitButtonChangePassword()
+        {
+            buttonChangePassword.Click += (_, e) =>
+            {
+                ChangePasswordView changePasswordView = new ChangePasswordView(Username);
+
+                changePasswordView.ShowDialog();
+            };
+        }
+
+        private void InitButtonCancel()
+        {
+            buttonCancel.Click += (_, e) =>
+            {
+                this.Close();
+            };
+        }
+
+        private void InitDateTimePickerDateOfBirth()
+        {
+            dateTimePickerDateOfBirth.Enabled = false;
+        }
+
+        private void InitTextBoxName()
+        {
+            textBoxName.Enabled = false;
+        }
+
+        private void InitTextBoxClass()
+        {
+            textBoxClass.Enabled = false;
+        }
+
+        private void InitTextBoxID()
+        {
+            textBoxID.Enabled = false;
+        }
+
+        private void InitTextBoxRole()
+        {
+            textBoxRole.Enabled = false;
+        }
+
+        private void InitTextBoxUsername()
+        {
+            textBoxUsername.Enabled = false;
         }
 
         private void PersonalInformationView_Load(object sender, EventArgs e)
