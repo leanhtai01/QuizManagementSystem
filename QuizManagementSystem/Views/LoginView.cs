@@ -68,6 +68,7 @@ namespace QuizManagementSystem.Views
 
                 Authenticate?.Invoke(this, e);
 
+                // determine whether login is success
                 if (IsSuccess)
                 {
                     if (LoginUser.password == "")
@@ -76,7 +77,24 @@ namespace QuizManagementSystem.Views
 
                         changePasswordView.ShowDialog();
                     }
-                    MessageBox.Show("Login success!");
+
+                    // open corresponding dashboard based on user's role
+                    if (RoleID == 0)
+                    {
+                        AdminDashboardView adminDashboardView = new AdminDashboardView(LoginUser.username, RoleID);
+
+                        adminDashboardView.ShowDialog();
+                    }
+                    else if (RoleID == 1 || RoleID == 2)
+                    {
+                        NonAdminDashboardView nonAdminDashboardView = new NonAdminDashboardView(LoginUser.username, RoleID);
+
+                        nonAdminDashboardView.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("This user don't have a role!");
+                    }
                 }
                 else
                 {

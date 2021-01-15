@@ -53,8 +53,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuizManagement.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\AdminDashboardPresenter.cs" />
     <Compile Include="Presenters\ChangePasswordPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\NonAdminDashboardPresenter.cs" />
     <Compile Include="Presenters\SignupPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,8 +72,10 @@
     <Compile Include="Views\ChangePasswordView.Designer.cs">
       <DependentUpon>ChangePasswordView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IAdminDashboardView.cs" />
     <Compile Include="Views\IChangePasswordView.cs" />
     <Compile Include="Views\ILoginView.cs" />
+    <Compile Include="Views\INonAdminDashboardView.cs" />
     <Compile Include="Views\ISignupView.cs" />
     <Compile Include="Views\LoginView.cs">
       <SubType>Form</SubType>
