@@ -21,6 +21,7 @@ namespace QuizManagementSystem.Presenters
 
         private void View_Authenticate(object sender, EventArgs e)
         {
+            view.RoleID = -1;
             view.IsSuccess = false;
 
             using (QuizManagementDataContext dataContext = new QuizManagementDataContext())
@@ -36,6 +37,8 @@ namespace QuizManagementSystem.Presenters
                     EncryptPassword encryptPassword = new EncryptPassword();
                     if (encryptPassword.IsPasswordValid(view.LoginUser.password, saltedPassword))
                     {
+                        // get corresponding roleID
+                        view.RoleID = (int)dataContext.Users.Where(user => user.username.Equals(view.LoginUser.username)).Select(user => user.roleID).FirstOrDefault();
                         view.IsSuccess = true;
                     }
                 }

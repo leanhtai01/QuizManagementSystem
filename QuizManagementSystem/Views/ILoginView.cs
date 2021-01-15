@@ -10,6 +10,7 @@ namespace QuizManagementSystem.Views
     public interface ILoginView
     {
         User LoginUser { get; set; }
+        int RoleID { get; set; }
         bool IsSuccess { get; set; }
         event EventHandler Authenticate;
     }
