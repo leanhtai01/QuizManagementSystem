@@ -30,13 +30,24 @@ namespace QuizManagementSystem.Views
             DashboardPresenter presenter = new DashboardPresenter(this);
 
             Load += DashboardView_Load;
+            buttonPersonalInfo.Click += (_, e) =>
+            {
+                PersonalInformationView personalInformationView = new PersonalInformationView(Username, RoleID);
+
+                personalInformationView.ShowDialog();
+            };
         }
 
         private void DashboardView_Load(object sender, EventArgs e)
         {
             GetPrivilege?.Invoke(this, e);
 
-            // setup for based on user role
+            // setup form based on user's role
+            SetupButton();
+        } // end method NonAdminDashboardView_Load
+
+        private void SetupButton()
+        {
             foreach (Button button in tableLayoutPanel1.Controls.OfType<Button>())
             {
                 foreach (var privilege in Privilege)
@@ -55,6 +66,6 @@ namespace QuizManagementSystem.Views
                     }
                 }
             }
-        } // end method NonAdminDashboardView_Load
+        } // end method SetupButton
     }
 }
