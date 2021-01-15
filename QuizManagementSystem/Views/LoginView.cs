@@ -15,7 +15,7 @@ namespace QuizManagementSystem.Views
     public partial class LoginView : Form, ILoginView
     {
         public User LoginUser { get; set; }
-        public int RoleID { get; set; }
+        public bool IsSuccess { get; set; }
 
         public event EventHandler Authenticate;
 
@@ -67,7 +67,7 @@ namespace QuizManagementSystem.Views
 
                 Authenticate?.Invoke(this, e);
 
-                if (RoleID != -1)
+                if (IsSuccess)
                 {
                     if (LoginUser.password == "")
                     {
