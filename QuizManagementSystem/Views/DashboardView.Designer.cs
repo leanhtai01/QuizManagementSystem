@@ -1,7 +1,7 @@
 ﻿
 namespace QuizManagementSystem.Views
 {
-    partial class NonAdminDashboardView
+    partial class DashboardView
     {
         /// <summary>
         /// Required designer variable.

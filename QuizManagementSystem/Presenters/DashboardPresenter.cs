@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace QuizManagementSystem.Presenters
 {
-    public class NonAdminDashboardPresenter
+    public class DashboardPresenter
     {
-        INonAdminDashboardView view;
+        IDashboardView view;
 
-        public NonAdminDashboardPresenter(INonAdminDashboardView view)
+        public DashboardPresenter(IDashboardView view)
         {
             this.view = view;
             view.GetPrivilege += View_GetPrivilege;
@@ -20,7 +20,7 @@ namespace QuizManagementSystem.Presenters
 
         private void View_GetPrivilege(object sender, EventArgs e)
         {
-            string formName = "NonAdminDashboardView";
+            string formName = "DashboardView";
 
             using (QuizManagementDataContext dataContext = new QuizManagementDataContext())
             {

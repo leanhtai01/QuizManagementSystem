@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QuizManagementSystem.Views
 {
-    public interface INonAdminDashboardView
+    public interface IDashboardView
     {
         string Username { get; set; }
         int RoleID { get; set; }

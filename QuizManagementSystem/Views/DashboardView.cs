@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace QuizManagementSystem.Views
 {
-    public partial class NonAdminDashboardView : Form, INonAdminDashboardView
+    public partial class DashboardView : Form, IDashboardView
     {
         public string Username { get; set; }
         public int RoleID { get; set; }
@@ -20,19 +20,19 @@ namespace QuizManagementSystem.Views
 
         public event EventHandler GetPrivilege;
 
-        public NonAdminDashboardView(string username, int roleID)
+        public DashboardView(string username, int roleID)
         {
             InitializeComponent();
 
             Username = username;
             RoleID = roleID;
 
-            NonAdminDashboardPresenter presenter = new NonAdminDashboardPresenter(this);
+            DashboardPresenter presenter = new DashboardPresenter(this);
 
-            Load += NonAdminDashboardView_Load;
+            Load += DashboardView_Load;
         }
 
-        private void NonAdminDashboardView_Load(object sender, EventArgs e)
+        private void DashboardView_Load(object sender, EventArgs e)
         {
             GetPrivilege?.Invoke(this, e);
 
