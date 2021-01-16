@@ -3,16 +3,16 @@
 
  Source Server         : MSSQLServer
  Source Server Type    : SQL Server
- Source Server Version : 15004073
+ Source Server Version : 15002080
  Source Host           : localhost:1433
  Source Catalog        : QuizManagement
  Source Schema         : dbo
 
  Target Server Type    : SQL Server
- Target Server Version : 15004073
+ Target Server Version : 15002080
  File Encoding         : 65001
 
- Date: 22/12/2020 21:04:30
+ Date: 16/01/2021 11:12:50
 */
 
 
@@ -38,16 +38,10 @@ GO
 -- ----------------------------
 -- Records of Answer
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[Answer] ON
 GO
 
 SET IDENTITY_INSERT [dbo].[Answer] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -73,12 +67,6 @@ GO
 -- ----------------------------
 -- Records of AnswerPracticeQuestion
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
-COMMIT
-GO
-
 
 -- ----------------------------
 -- Table structure for AnswerQuestion
@@ -102,12 +90,6 @@ GO
 -- ----------------------------
 -- Records of AnswerQuestion
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
-COMMIT
-GO
-
 
 -- ----------------------------
 -- Table structure for Class
@@ -130,9 +112,6 @@ GO
 -- ----------------------------
 -- Records of Class
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[Class] ON
 GO
 
@@ -146,9 +125,6 @@ INSERT INTO [dbo].[Class] ([classID], [schoolLevelID], [name]) VALUES (N'2', N'2
 GO
 
 SET IDENTITY_INSERT [dbo].[Class] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -175,16 +151,10 @@ GO
 -- ----------------------------
 -- Records of Exam
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[Exam] ON
 GO
 
 SET IDENTITY_INSERT [dbo].[Exam] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -208,12 +178,6 @@ GO
 -- ----------------------------
 -- Records of ExamQuiz
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
-COMMIT
-GO
-
 
 -- ----------------------------
 -- Table structure for FormControl
@@ -235,10 +199,70 @@ GO
 -- ----------------------------
 -- Records of FormControl
 -- ----------------------------
-BEGIN TRANSACTION
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'DashboardView', N'buttonContributeQuestion')
 GO
 
-COMMIT
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'DashboardView', N'buttonManagement')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'DashboardView', N'buttonPersonalInfo')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'DashboardView', N'buttonPractice')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'DashboardView', N'buttonTakeQuiz')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'buttonCancel')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'buttonChangePassword')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'buttonEditDateOfBirth')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'buttonEditName')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'buttonSave')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'dateTimePickerDateOfBirth')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'labelClass')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'labelDateOfBirth')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'labelID')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'labelName')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'labelRole')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'labelUsername')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'textBoxClass')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'textBoxID')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'textBoxName')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'textBoxRole')
+GO
+
+INSERT INTO [dbo].[FormControl] ([form], [control]) VALUES (N'PersonalInformationView', N'textBoxUsername')
 GO
 
 
@@ -264,16 +288,10 @@ GO
 -- ----------------------------
 -- Records of PracticeAnswer
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[PracticeAnswer] ON
 GO
 
 SET IDENTITY_INSERT [dbo].[PracticeAnswer] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -302,16 +320,10 @@ GO
 -- ----------------------------
 -- Records of PracticeQuestion
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[PracticeQuestion] ON
 GO
 
 SET IDENTITY_INSERT [dbo].[PracticeQuestion] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -335,12 +347,6 @@ GO
 -- ----------------------------
 -- Records of PracticeQuestionQuiz
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
-COMMIT
-GO
-
 
 -- ----------------------------
 -- Table structure for Question
@@ -367,16 +373,10 @@ GO
 -- ----------------------------
 -- Records of Question
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[Question] ON
 GO
 
 SET IDENTITY_INSERT [dbo].[Question] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -400,16 +400,10 @@ GO
 -- ----------------------------
 -- Records of QuestionLevel
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[QuestionLevel] ON
 GO
 
 SET IDENTITY_INSERT [dbo].[QuestionLevel] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -433,12 +427,6 @@ GO
 -- ----------------------------
 -- Records of QuestionQuiz
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
-COMMIT
-GO
-
 
 -- ----------------------------
 -- Table structure for Quiz
@@ -452,7 +440,8 @@ CREATE TABLE [dbo].[Quiz] (
   [length] int  NULL,
   [type] bit  NULL,
   [createBy] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
-  [lastModifiedBy] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
+  [lastModifiedBy] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [description] varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
 )
 GO
 
@@ -463,16 +452,10 @@ GO
 -- ----------------------------
 -- Records of Quiz
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[Quiz] ON
 GO
 
 SET IDENTITY_INSERT [dbo].[Quiz] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -496,19 +479,13 @@ GO
 -- ----------------------------
 -- Records of Role
 -- ----------------------------
-BEGIN TRANSACTION
+INSERT INTO [dbo].[Role] ([roleID], [description]) VALUES (N'0', N'Admin')
 GO
 
-INSERT INTO [dbo].[Role] VALUES (N'0', N'Admin')
+INSERT INTO [dbo].[Role] ([roleID], [description]) VALUES (N'1', N'Teacher')
 GO
 
-INSERT INTO [dbo].[Role] VALUES (N'1', N'Teacher')
-GO
-
-INSERT INTO [dbo].[Role] VALUES (N'2', N'Student')
-GO
-
-COMMIT
+INSERT INTO [dbo].[Role] ([roleID], [description]) VALUES (N'2', N'Student')
 GO
 
 
@@ -535,10 +512,202 @@ GO
 -- ----------------------------
 -- Records of RoleFormControl
 -- ----------------------------
-BEGIN TRANSACTION
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'DashboardView', N'buttonContributeQuestion', N'1', N'1')
 GO
 
-COMMIT
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'DashboardView', N'buttonManagement', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'DashboardView', N'buttonPersonalInfo', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'DashboardView', N'buttonPractice', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'DashboardView', N'buttonTakeQuiz', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'buttonCancel', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'buttonChangePassword', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'buttonEditDateOfBirth', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'buttonEditName', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'buttonSave', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'dateTimePickerDateOfBirth', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'labelClass', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'labelDateOfBirth', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'labelID', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'labelName', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'labelRole', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'labelUsername', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'textBoxClass', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'textBoxID', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'textBoxName', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'textBoxRole', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'0', N'PersonalInformationView', N'textBoxUsername', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'DashboardView', N'buttonContributeQuestion', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'DashboardView', N'buttonManagement', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'DashboardView', N'buttonPersonalInfo', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'DashboardView', N'buttonPractice', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'DashboardView', N'buttonTakeQuiz', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'buttonCancel', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'buttonChangePassword', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'buttonEditDateOfBirth', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'buttonEditName', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'buttonSave', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'dateTimePickerDateOfBirth', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'labelClass', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'labelDateOfBirth', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'labelID', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'labelName', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'labelRole', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'labelUsername', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'textBoxClass', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'textBoxID', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'textBoxName', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'textBoxRole', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'1', N'PersonalInformationView', N'textBoxUsername', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'DashboardView', N'buttonContributeQuestion', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'DashboardView', N'buttonManagement', N'1', N'1')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'DashboardView', N'buttonPersonalInfo', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'DashboardView', N'buttonPractice', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'DashboardView', N'buttonTakeQuiz', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'buttonCancel', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'buttonChangePassword', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'buttonEditDateOfBirth', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'buttonEditName', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'buttonSave', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'dateTimePickerDateOfBirth', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'labelClass', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'labelDateOfBirth', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'labelID', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'labelName', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'labelRole', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'labelUsername', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'textBoxClass', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'textBoxID', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'textBoxName', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'textBoxRole', N'0', N'0')
+GO
+
+INSERT INTO [dbo].[RoleFormControl] ([roleID], [form], [control], [invisible], [disable]) VALUES (N'2', N'PersonalInformationView', N'textBoxUsername', N'0', N'0')
 GO
 
 
@@ -562,16 +731,10 @@ GO
 -- ----------------------------
 -- Records of RoleForSignup
 -- ----------------------------
-BEGIN TRANSACTION
+INSERT INTO [dbo].[RoleForSignup] ([roleID], [description]) VALUES (N'1', N'Teacher')
 GO
 
-INSERT INTO [dbo].[RoleForSignup] VALUES (N'1', N'Teacher')
-GO
-
-INSERT INTO [dbo].[RoleForSignup] VALUES (N'2', N'Student')
-GO
-
-COMMIT
+INSERT INTO [dbo].[RoleForSignup] ([roleID], [description]) VALUES (N'2', N'Student')
 GO
 
 
@@ -595,9 +758,6 @@ GO
 -- ----------------------------
 -- Records of SchoolLevel
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[SchoolLevel] ON
 GO
 
@@ -611,9 +771,6 @@ INSERT INTO [dbo].[SchoolLevel] ([schoolLevelID], [description]) VALUES (N'2', N
 GO
 
 SET IDENTITY_INSERT [dbo].[SchoolLevel] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -639,13 +796,7 @@ GO
 -- ----------------------------
 -- Records of Student
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
-INSERT INTO [dbo].[Student] VALUES (N'1760169', N'Lê Anh Tài', N'1994-12-12', N'2')
-GO
-
-COMMIT
+INSERT INTO [dbo].[Student] ([studentID], [name], [dateOfBirth], [classID]) VALUES (N'1760169', N'Lê Anh Tài', N'1994-12-12', N'2')
 GO
 
 
@@ -669,10 +820,7 @@ GO
 -- ----------------------------
 -- Records of StudentUser
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
-COMMIT
+INSERT INTO [dbo].[StudentUser] ([username], [studentID]) VALUES (N'leanhtai01', N'1760169')
 GO
 
 
@@ -696,16 +844,10 @@ GO
 -- ----------------------------
 -- Records of Subject
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
 SET IDENTITY_INSERT [dbo].[Subject] ON
 GO
 
 SET IDENTITY_INSERT [dbo].[Subject] OFF
-GO
-
-COMMIT
 GO
 
 
@@ -731,12 +873,6 @@ GO
 -- ----------------------------
 -- Records of TakeQuiz
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
-COMMIT
-GO
-
 
 -- ----------------------------
 -- Table structure for TakeQuizInExam
@@ -760,12 +896,6 @@ GO
 -- ----------------------------
 -- Records of TakeQuizInExam
 -- ----------------------------
-BEGIN TRANSACTION
-GO
-
-COMMIT
-GO
-
 
 -- ----------------------------
 -- Table structure for Teacher
@@ -788,13 +918,10 @@ GO
 -- ----------------------------
 -- Records of Teacher
 -- ----------------------------
-BEGIN TRANSACTION
+INSERT INTO [dbo].[Teacher] ([teacherID], [name], [dateOfBirth]) VALUES (N'1234567', N'Nguyễn Văn Hoài Nam Hưng', N'1989-07-01')
 GO
 
-INSERT INTO [dbo].[Teacher] VALUES (N'1760169', N'Lê Anh Tài', N'1994-12-12')
-GO
-
-COMMIT
+INSERT INTO [dbo].[Teacher] ([teacherID], [name], [dateOfBirth]) VALUES (N'1760169', N'Lê Anh Tài', N'1994-12-12')
 GO
 
 
@@ -818,10 +945,10 @@ GO
 -- ----------------------------
 -- Records of TeacherUser
 -- ----------------------------
-BEGIN TRANSACTION
+INSERT INTO [dbo].[TeacherUser] ([username], [teacherID]) VALUES (N'nguyenvannam', N'1234567')
 GO
 
-COMMIT
+INSERT INTO [dbo].[TeacherUser] ([username], [teacherID]) VALUES (N'teacher01', N'1760169')
 GO
 
 
@@ -846,13 +973,16 @@ GO
 -- ----------------------------
 -- Records of User
 -- ----------------------------
-BEGIN TRANSACTION
+INSERT INTO [dbo].[User] ([username], [password], [roleID]) VALUES (N'admin', N'3SM4ZX9FyjcoccA9OpLUjFcf4L0xRqjYGPwn00Z8+iceyqp7kOWorMXod75RtjIGZrITHWR0sJPPPQKyBIq1bswOccpQnJUKUD4=', N'0')
 GO
 
-INSERT INTO [dbo].[User] VALUES (N'admin', N'', N'0')
+INSERT INTO [dbo].[User] ([username], [password], [roleID]) VALUES (N'leanhtai01', N'Vul/wqC+WA2f6FzfkxIvBg0lSAJn36xey9jFbaP0vmeXu5AzTCSXYcoR/x+TSAjSY6OMtvRK8zeD8SpDyNt7T7RQIXDwbmZj7F0=', N'2')
 GO
 
-COMMIT
+INSERT INTO [dbo].[User] ([username], [password], [roleID]) VALUES (N'nguyenvannam', N'4e45n7z+b45lH911ZUFPBEzBm6SPHPoU+azq9ZxOJCfGp8rvFyzIeTZ4rQvtV/clX+k1G6kREmA6zcQx6s9Sn8p4/BEL+y598R0=', N'1')
+GO
+
+INSERT INTO [dbo].[User] ([username], [password], [roleID]) VALUES (N'teacher01', N'iNuSG3osoSaqa00SGIC74uAK3CBQHhqKn4hj3TSxAUvWkRVksNnDuBvVuA8bFSdt8d+c28ytSOm6WhWYAlWl1wcJ2BI3Zh4aRjU=', N'1')
 GO
 
 
