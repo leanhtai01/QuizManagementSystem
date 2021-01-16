@@ -79,14 +79,33 @@ namespace QuizManagementSystem.Views
             InitDateTimePickerDateOfBirth();
             InitButtonCancel();
             InitButtonChangePassword();
+            InitButtonSave();
             InitButtonEditName();
             InitButtonEditDateOfBirth();
+        }
+
+        private void InitButtonSave()
+        {
+            buttonSave.Enabled = false;
+
+            buttonSave.Click += (_, e) =>
+            {
+                if (RoleID != 0)
+                {
+                    RealName = textBoxName.Text;
+                    DateOfBirth = dateTimePickerDateOfBirth.Value;
+                    Save?.Invoke(this, e);
+                    MessageBox.Show("Your change has been saved!");
+                }
+            };
         }
 
         private void InitButtonEditDateOfBirth()
         {
             buttonEditDateOfBirth.Click += (_, e) =>
             {
+                buttonSave.Enabled = true;
+
                 // toggle dateTimePickerDateOfBirth enable/disable
                 if (dateTimePickerDateOfBirth.Enabled == false)
                 {
@@ -103,6 +122,8 @@ namespace QuizManagementSystem.Views
         {
             buttonEditName.Click += (_, e) =>
             {
+                buttonSave.Enabled = true;
+
                 // toggle textBoxName enable/disable
                 textBoxName.Enabled = textBoxName.Enabled ? false : true;
             };

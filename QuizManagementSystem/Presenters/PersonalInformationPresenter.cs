@@ -16,14 +16,33 @@ namespace QuizManagementSystem.Presenters
         {
             this.view = view;
             view.LoadInfo += View_LoadInfo;
-            //view.Save += View_Save;
+            view.Save += View_Save;
             view.GetPrivilege += View_GetPrivilege;
         }
 
-        //private void View_Save(object sender, EventArgs e)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        private void View_Save(object sender, EventArgs e)
+        {
+            using (QuizManagementDataContext dataContext = new QuizManagementDataContext())
+            {
+                switch (view.RoleID)
+                {
+                    case 1: // teacher
+                        Teacher teacher = dataContext.Teachers.FirstOrDefault(t => t.teacherID.Equals(view.ID));
+
+                        teacher.name = view.RealName;
+                        teacher.dateOfBirth = view.DateOfBirth;
+                        dataContext.SubmitChanges();
+                        break;
+                    case 2: // student
+                        Student student = dataContext.Students.FirstOrDefault(s => s.studentID.Equals(view.ID));
+
+                        student.name = view.RealName;
+                        student.dateOfBirth = view.DateOfBirth;
+                        dataContext.SubmitChanges();
+                        break;
+                }
+            }
+        }
 
         private void View_LoadInfo(object sender, EventArgs e)
         {
