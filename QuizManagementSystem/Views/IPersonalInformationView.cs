@@ -11,7 +11,10 @@ namespace QuizManagementSystem.Views
     {
         string Username { get; set; }
         int RoleID { get; set; }
+        string Role { get; set; }
+        string ID { get; set; }
         string RealName { get; set; }
+        string Class { get; set; }
         DateTime DateOfBirth { get; set; }
         List<RoleFormControl> Privilege { get; set; }
         event EventHandler LoadInfo;

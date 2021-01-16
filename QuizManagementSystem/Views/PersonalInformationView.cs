@@ -16,7 +16,10 @@ namespace QuizManagementSystem.Views
     {
         public string Username { get; set; }
         public int RoleID { get; set; }
+        public string Role { get; set; }
+        public string ID { get; set; }
         public string RealName { get; set; }
+        public string Class { get; set; }
         public DateTime DateOfBirth { get; set; }
         public List<RoleFormControl> Privilege { get; set; }
 
@@ -36,6 +39,34 @@ namespace QuizManagementSystem.Views
             Load += PersonalInformationView_Load;
 
             InitControls();
+        }
+
+        private void PersonalInformationView_Load(object sender, EventArgs e)
+        {
+            GetPrivilege?.Invoke(this, e);
+            LoadInfo?.Invoke(this, e);
+
+            // setup form based on user's role
+            SetupButton();
+            SetupLabel();
+            SetupTextBox();
+            SetupDateTimePicker();
+
+            DisplayDataToUI();
+        }
+
+        private void DisplayDataToUI()
+        {
+            textBoxUsername.Text = Username;
+            textBoxRole.Text = Role;
+
+            if (RoleID != 0)
+            {
+                textBoxID.Text = ID;
+                textBoxName.Text = RealName;
+                textBoxClass.Text = Class;
+                dateTimePickerDateOfBirth.Value = DateOfBirth;
+            }
         }
 
         private void InitControls()
@@ -123,17 +154,6 @@ namespace QuizManagementSystem.Views
         private void InitTextBoxUsername()
         {
             textBoxUsername.Enabled = false;
-        }
-
-        private void PersonalInformationView_Load(object sender, EventArgs e)
-        {
-            GetPrivilege?.Invoke(this, e);
-
-            // setup form based on user's role
-            SetupButton();
-            SetupLabel();
-            SetupTextBox();
-            SetupDateTimePicker();
         }
 
         private void SetupDateTimePicker()
